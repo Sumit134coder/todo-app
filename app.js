@@ -4,10 +4,9 @@ var tasks = document.querySelector("#tasks");
 
 function TaskAdded(){
     var node = document.createElement("li");
+    node.innerText = AddTask.value;
     var btnDone = document.createElement("button");
     btnDone.innerHTML = '<i class="fas fa-check"></i>';
-    var textNode = document.createTextNode(AddTask.value);
-    node.appendChild(textNode);
     var btnTrash = document.createElement("button");
     btnTrash.innerHTML = '<i class="fas fa-trash"></i>';
     btnTrash.classList.add("btn-Trash");
@@ -16,10 +15,8 @@ function TaskAdded(){
     document.getElementById("tasks").appendChild(node).appendChild(btnTrash);
 
     AddTask.value = "";
-    btnDone.addEventListener("click", (node)=>{
-        var item =document.getElementById("tasks").node;
-        item.classList.add("completed")
-
+    btnDone.addEventListener("click", (event)=>{
+        document.getElementById("tasks").removeChild(node);
     })
     btnTrash.addEventListener("click",()=>{
         document.getElementById("tasks").removeChild(node);
